@@ -1,0 +1,7 @@
+with-expecter: true
+outpkg: "mocks"
+packages:
+  clone/interfaces:
+    config:
+      all: true
+      dir: "mocks"
