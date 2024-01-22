@@ -3,7 +3,6 @@ package main
 import (
 	"clone/interfaces"
 	"clone/mocks"
-	"testing"
 )
 
 // Interface implementation
@@ -28,11 +27,20 @@ func (r *repository) Transaction(cb func(client *client) error) error {
 // Usage
 func Foo[C interfaces.Client[C], R interfaces.Repository[R, C]](repo R) {}
 
+type testCleanup struct{}
+
+func (*testCleanup) Logf(format string, args ...interface{}) {}
+
+func (*testCleanup) Errorf(format string, args ...interface{}) {}
+
+func (*testCleanup) FailNow() {}
+
+func (t *testCleanup) Cleanup(func()) {}
+
 func main() {
 	repository := &repository{}
 	Foo(repository)
 
-	var t *testing.T
-	mockRepository := mocks.NewMockRepository(t)
+	mockRepository := mocks.NewMockRepository(&testCleanup{})
 	Foo(mockRepository)
 }
