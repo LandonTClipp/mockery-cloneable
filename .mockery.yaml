@@ -11,10 +11,10 @@ packages:
       Repository:
         config:
           replace-generic:
-            R: MockRepository
-            C: MockClient
+            R: "*MockRepository"
+            C: "*MockClient"
       Client:
         config:
           replace-generic:
-            C: MockClient
+            C: "*MockClient"
 
