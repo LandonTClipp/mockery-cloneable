@@ -1,8 +1,8 @@
 package interfaces
 
 // Interfaces
-type Repository[T any, C Client[C]] interface {
-	Clone(client C) T
+type Repository[R any, C Client[C]] interface {
+	Clone(client C) R
 	Transaction(fn func(client C) error) error
 }
 

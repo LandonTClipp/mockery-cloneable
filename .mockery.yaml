@@ -5,3 +5,16 @@ packages:
     config:
       all: true
       dir: "mocks"
+    # The following is a "proposed" config that would allow users to
+    # provide concrete types for generic specifications in an interface.
+    interfaces:
+      Repository:
+        config:
+          replace-generic:
+            R: MockRepository
+            C: MockClient
+      Client:
+        config:
+          replace-generic:
+            C: MockClient
+
